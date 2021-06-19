@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import Star from "./Star";
 import { createArray } from "./lib";
-
-const Star = ({ selected = false, onSelect = f => f }) => (
-  <FaStar color={selected ? "red" : "grey"} onClick={onSelect} />
-);
 
 export default function StarRating({ style = {}, totalStars = 5, ...props }) {
   const [selectedStars, setSelectedStars] = useState(0);
