@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useFetch } from "./Fetch";
 
 function GitHubUser({ login }) {
-  const [data, setData] = useState();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!login) return;
-    setLoading(true);
-    fetch(`https://api.github.com/users/${login}`)
-      .then(data => data.json())
-      .then(setData)
-      .then(() => setLoading(false))
-      .catch(setError);
-  }, [login]);
+  const { loading, data, error } = useFetch(`https://api.github.com/users/${login}`);
 
   if (loading) return <h1>loading...</h1>;
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
