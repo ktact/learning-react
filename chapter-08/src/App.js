@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Fetch from "./Fetch";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function GitHubUser({ login }) {
   return (
     <Fetch
       uri={`https://api.github.com/users/${login}`}
+      loadingFallback={<ClipLoader css={{ display: 'block', margin: '0 auto' }}/>}
       renderSuccess={UserDetails}
     />
   );
