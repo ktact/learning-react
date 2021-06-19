@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import colorData from "./color-data.json";
 import ColorList from "./ColorList.js";
 import AddColorForm from "./AddColorForm";
+import { v4 } from "uuid";
 
 export default function App() {
   const [colors, setColors] = useState(colorData);
@@ -18,10 +19,23 @@ export default function App() {
     setColors(newColors);
   };
 
+  const registerColor = (title, color) => {
+    const newColors = [
+      ...colors,
+      {
+        id: v4(),
+        rating: 0,
+        title,
+        color
+      }
+    ];
+    setColors(newColors);
+  };
+
   return (
     <>
       <AddColorForm
-        onNewColor={(title, color) => alert(`TODO: Create ${title} = ${color}`)}
+        onNewColor={registerColor}
       />
       <ColorList
         colors={colors}
