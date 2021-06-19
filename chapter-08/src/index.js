@@ -1,13 +1,10 @@
-async function requestGithubUser(githubLogin) {
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${githubLogin}`
-    );
-    const userData = await response.json();
-    console.log(userData);
-  } catch (error) {
-    console.log(error);
-  }
-}
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-requestGithubUser("ktact");
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
